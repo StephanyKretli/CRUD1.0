@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div>
+      <div style="align-items: center; padding-top: 2px;"><p>
+        <h1>Cadastro</h1>
+    </div>
+      <div id="result"></div>
+
+        <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+          {% csrf_token %}
+          <!--{{form.as_p}}-->
+          <div>
+          <div><label>Nome:</label></div>
+            <input type="text" name="nome">
+          </div>
+
+          <div>
+          <div><label>Data de nascimento:</label></div>
+          <input type="date" name="data_nasc">
+          </div>
+
+          <div>
+          <div><label>CPF:</label></div>
+          <input type="number" name="cpf">
+          </div>
+          
+          <div>
+          <div><label>Data de cadastro:</label></div>
+          <input type="date" name="data_cad">
+          </div>
+          
+          <button type="submit" class="clear">Salvar</button>
+          <button class="back">
+            <a href="/" class="back">Voltar</a>
+          </button>
+        </form>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
+
+  </body>
+
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form{
+      width: 300px;
+    }
+
+    button{
+      border: none;
+    }
+
+    input {
+      width: -webkit-fill-available;
+      margin-bottom: 10px;
+    }
+    .clear{
+      background-color: rgb(64, 129, 129);
+      border-radius: 3px;
+      border-color: none;
+      margin-bottom: 5px;
+      margin-top: 30px;
+      color: aliceblue;
+      align-items: center;
+      width: -webkit-fill-available;
+    }
+    .back{
+      background-color: rgb(64, 129, 129);
+      border-radius: 3px;
+      border-color: none;
+      margin-bottom: 5px;
+      color: aliceblue;
+      align-items: center;
+      width: -webkit-fill-available;
+    }
+  </style>
+
+</html>
